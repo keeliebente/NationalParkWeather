@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>@ViewData["Title"] - National Park Geek</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/js/site.js" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="alt">
+        <div class="logo"><a asp-controller="Home" asp-action="Index">National Park Geek</a></div>
+        <a href="#menu">Menu</a>
+
+    </header>
+
+    <!-- Nav -->
+    <nav id="menu">
+        <ul class="links">
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Survey">Survey</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="FavoriteParks">Favorite Parks</a></li>
+        </ul>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner full">
+        <article>
+            <img src="~/images/slide01.jpg" alt="">
+            <div class="inner">
+                <header>
+                    <p>Visit the Beautiful National Parks</p>
+                    <h2>National Park Geek</h2>
+                </header>
+            </div>
+        </article>
+        <article>
+            <img src="~/images/slide02.jpg" alt="">
+            <div class="inner">
+                <header>
+                    <p>Visit the Beautiful National Parks</p>
+                    <h2>National Park Geek</h2>
+                </header>
+            </div>
+        </article>
+        <article>
+            <img src="~/images/slide03.jpg" alt="">
+            <div class="inner">
+                <header>
+                    <p>Visit the Beautiful National Parks</p>
+                    <h2>National Park Geek</h2>
+                </header>
+            </div>
+        </article>
+        <article>
+            <img src="~/images/slide04.jpg" alt="">
+            <div class="inner">
+                <header>
+                    <p>Visit the Beautiful National Parks</p>
+                    <h2>National Park Geek</h2>
+                </header>
+            </div>
+        </article>
+        <article>
+            <img src="~/images/slide05.jpg" alt="">
+            <div class="inner">
+                <header>
+                    <p>Visit the Beautiful National Parks</p>
+                    <h2>National Park Geek</h2>
+                </header>
+            </div>
+        </article>
+    </section>
+    <a asp-controller="Home" asp-action="Index"> <img class="resize_logo" src="~/images/logo.png" /></a>
+    @RenderBody();
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="copyright">
+            © 2018 - National Park Geek
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery.scrollex.min.js"></script>
+    <script src="~/js/skel.min.js"></script>
+    <script src="~/js/util.js"></script>
+    <script src="~/js/main.js"></script>
+
+</body>
+</html>

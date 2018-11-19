@@ -1,0 +1,93 @@
+﻿@model ParkModel
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="temp">
+    <form asp-controller="Home" asp-action="Detail" method="post">
+        <select asp-for="TemperatureScaleModel.TemperatureScale" asp-items="Model.TemperatureScaleModel.TemperatureScales"></select>
+        <input class="button special" type="submit" value="Submit" />
+    </form>
+</div>
+
+<br />
+<br />
+<br />
+
+@{
+    <div style="width:800px; margin:0 auto;">
+        <div class="image fit">
+            <img src="~/images/parks/@(Model.ParkCode).jpg" alt="park photo" />
+            <div class="content">
+                <header class="align-center">
+                    <h2>@Model.ParkName</h2>
+                    <p>@Model.State</p>
+                </header>
+                <p>@Model.ParkDescription</p>
+            </div>
+        </div>
+
+        <ul class="alt">
+            <li>Year Founded: @Model.YearFounded</li>
+            <li>Campsites: @Model.NumberOfCampsites.ToString("N0")</li>
+            <li>Acreage: @Model.Acreage.ToString("N0")</li>
+            <li>Elevation: @Model.ElevationInFeet.ToString("N0") ft.</li>
+            <li>Miles of Trail: @Model.MilesOfTrail.ToString("N2")</li>
+            <li>Animal Species: @Model.NumberOfAnimalSpecies.ToString("N0")</li>
+            <li>Annual Visitor Count: @Model.AnnualVisitorCount.ToString("N0")</li>
+            <li>Climate: @Model.Climate</li>
+            <li>Entry Fee: @Model.EntryFee.ToString("C2")</li>
+        </ul>
+
+        <blockquote>
+            <p>@Model.InspirationalQuote</p>
+            <p>-@Model.InspirationalQuoteSource</p>
+        </blockquote>
+    </div>
+}
+
+@if (Model.TemperatureScaleModel.TemperatureScale == "Celsius")
+{
+    <table>
+        @foreach (WeatherModel weather in Model.Weather)
+        {
+            <tr>
+                <td> <b>@weather.GetDayOfWeek()</b></td>
+                <td><img class="resize" src="~/images/weather/@(weather.Forecast).png" alt="weather photo" /></td>
+                <td>Low: @weather.CelsiusLow()° C </td>
+                <td>High: @weather.CelsiusHigh()° C</td>
+                <td>Forecast: @weather.Forecast </td>
+                <td>
+                    @foreach (string recommendation in weather.Recommendation())
+                    {
+                        <p class="test">@recommendation </p>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+} //put if/else statement in for Low and High to reduce duplication 
+//reserve tables for actual tabular data (like Excel) 
+
+else
+{
+    <table>
+        @foreach (WeatherModel weather in Model.Weather)
+        {
+            <tr>
+                <td> <b>@weather.GetDayOfWeek()</b></td>
+                <td><img class="resize" src="~/images/weather/@(weather.Forecast).png" alt="weather photo" /></td>
+                <td>Low: @weather.Low° F</td>
+                <td>High: @weather.High° F</td>
+                <td>Forecast: @weather.Forecast</td>
+                <td>
+                    @foreach (string recommendation in weather.Recommendation())
+                    {
+                        <p class="test">@recommendation</p>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}

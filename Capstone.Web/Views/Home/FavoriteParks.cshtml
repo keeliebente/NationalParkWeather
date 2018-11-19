@@ -1,0 +1,30 @@
+﻿@model FavoriteParksViewModel
+
+@{
+    ViewData["Title"] = "FavoriteParks";
+}
+
+<h2 class="survey">Favorite Parks by Survey Count</h2>
+
+@foreach (ParkModel park in Model.FavoriteParks)
+{
+    <div style="width:700px; margin:0 auto;">
+        <div class="image fit">
+            <img src="~/images/parks/@(park.ParkCode).jpg" />
+            <div class="content">
+                <header class="align-center">
+                    <h2>@park.ParkName</h2>
+                    <p>@park.State</p>
+                    @if (park.SurveyCount > 1) //ternary operator 
+                    {
+                        <p>Named Favorite Park @park.SurveyCount times!</p>
+                    }
+                    else
+                    {
+                        <p>Named Favorite Park @park.SurveyCount time!</p>
+                    }
+                </header>
+            </div>
+        </div>
+    </div>
+}
