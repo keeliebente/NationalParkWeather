@@ -36,7 +36,7 @@ namespace Capstone.Tests
         }
 
         [TestMethod]
-        public void RecommendationTest() //test each scenario in its own method 
+        public void RecommendationTest()
         {
             weatherModel.Low = 10;
             weatherModel.High = 40;

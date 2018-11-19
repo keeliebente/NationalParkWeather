@@ -15,14 +15,7 @@
                 <header class="align-center">
                     <h2>@park.ParkName</h2>
                     <p>@park.State</p>
-                    @if (park.SurveyCount > 1) //ternary operator 
-                    {
-                        <p>Named Favorite Park @park.SurveyCount times!</p>
-                    }
-                    else
-                    {
-                        <p>Named Favorite Park @park.SurveyCount time!</p>
-                    }
+                    <p>Named Favorite Park @park.SurveyCount @(park.SurveyCount > 1 ? "times!" : "time!")</p>
                 </header>
             </div>
         </div>

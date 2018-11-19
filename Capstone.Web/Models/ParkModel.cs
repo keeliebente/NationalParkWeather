@@ -23,8 +23,6 @@ namespace Capstone.Web.Models
         public IList<WeatherModel> Weather { get; set; }
 
         public TemperatureScaleModel TemperatureScaleModel { get; set; }
-        //not related to the business logic of the park 
-        //create park viewmodel that takes this 
 
         public int SurveyCount { get; set; }
     }

@@ -4,6 +4,9 @@ National Park Geek Capstone
 Focus for this capstone: 
 -Dependency injection
 -MVC principals 
+-Integration Testing
+-Unit Testing
+-Configuring sessions
 
 
 CSS and Javascript- Hielo template by Templated

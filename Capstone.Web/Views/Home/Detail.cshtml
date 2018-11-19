@@ -47,47 +47,29 @@
     </div>
 }
 
-@if (Model.TemperatureScaleModel.TemperatureScale == "Celsius")
-{
-    <table>
-        @foreach (WeatherModel weather in Model.Weather)
-        {
-            <tr>
-                <td> <b>@weather.GetDayOfWeek()</b></td>
-                <td><img class="resize" src="~/images/weather/@(weather.Forecast).png" alt="weather photo" /></td>
+<table>
+    @foreach (WeatherModel weather in Model.Weather)
+    {
+        <tr>
+            <td> <b>@weather.GetDayOfWeek()</b></td>
+            <td><img class="resize" src="~/images/weather/@(weather.Forecast).png" alt="weather photo" /></td>
+            @if (Model.TemperatureScaleModel.TemperatureScale == "Celsius")
+            {
                 <td>Low: @weather.CelsiusLow()° C </td>
                 <td>High: @weather.CelsiusHigh()° C</td>
-                <td>Forecast: @weather.Forecast </td>
-                <td>
-                    @foreach (string recommendation in weather.Recommendation())
-                    {
-                        <p class="test">@recommendation </p>
-                    }
-                </td>
-            </tr>
-        }
-    </table>
-} //put if/else statement in for Low and High to reduce duplication 
-//reserve tables for actual tabular data (like Excel) 
-
-else
-{
-    <table>
-        @foreach (WeatherModel weather in Model.Weather)
-        {
-            <tr>
-                <td> <b>@weather.GetDayOfWeek()</b></td>
-                <td><img class="resize" src="~/images/weather/@(weather.Forecast).png" alt="weather photo" /></td>
+            }
+            else
+            {
                 <td>Low: @weather.Low° F</td>
                 <td>High: @weather.High° F</td>
-                <td>Forecast: @weather.Forecast</td>
-                <td>
-                    @foreach (string recommendation in weather.Recommendation())
-                    {
-                        <p class="test">@recommendation</p>
-                    }
-                </td>
-            </tr>
-        }
-    </table>
-}
+            }
+            <td>Forecast: @weather.Forecast </td>
+            <td>
+                @foreach (string recommendation in weather.Recommendation())
+                {
+                    <p class="test">@recommendation </p>
+                }
+            </td>
+        </tr>
+    }
+</table>
